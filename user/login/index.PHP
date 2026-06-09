@@ -7,6 +7,17 @@ if(isset($_SESSION['user_id'])){
     header("Location: ../../dashboard/");
     exit(); //siempre que haya un redireccionamiento
 }
+
+$error = '';
+
+try {
+$_SESSION['error']['login'];
+}
+catch (\Throwable $th) {
+    //throw $th;
+    $_SESSION['error'] = [];
+}
+
 ?>
 
 <!doctype html>
@@ -15,7 +26,7 @@ if(isset($_SESSION['user_id'])){
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>AdminLTE 4 | Login</title>
+    <title>CRM | Login</title>
 
     <!--begin::Accessibility Meta Tags-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
@@ -69,13 +80,23 @@ if(isset($_SESSION['user_id'])){
             <div class="card-header">
                 <a href="../../"
                     class="link-dark text-center link-offset-2 link-opacity-100 link-opacity-50-hover">
-                    <h1 class="mb-0"><b>Admin</b>LTE</h1>
+                    <h1 class="mb-0"><b>Bienvenid@</b></h1>
                 </a>
             </div>
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Hola! Ingresa tus credenciales</p>
+               
+                <?php if(isset($_SESSION['error'])){ ?>
+                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Error!</strong> 
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<?php
+}
+?>
 
-                <form action="validate/" method="post">
+
+                <form action="auth/" method="post">
                     <div class="input-group mb-1">
                         <div class="form-floating">
                             <input id="loginEmail" type="email" class="form-control" value="" placeholder="Ingrese su email" name="username" />

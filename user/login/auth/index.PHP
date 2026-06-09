@@ -12,8 +12,8 @@ if(isset($_SESSION['user_id'])){
    $FromPassword = $_POST['password'];
    
    
-   $user = 'proyecto@web.cl';
-   $pass = 'holaMundo';
+   $user = 'r@r.com';
+   $pass = '123';
 
    if($user == $FromUsername && $pass == $FromPassword){
        $_SESSION['user_id'] = 1;
@@ -21,5 +21,8 @@ if(isset($_SESSION['user_id'])){
        header("Location: ../../../dashboard/");
     exit(); //siempre que haya un redireccionamiento
 }
-       echo' usuario y contraseña malos';
+
+$_SESSION['error'] = ['Login' => 'Error de usuario o contraseña'];
+header("Location: ../");
+      
 ?>
