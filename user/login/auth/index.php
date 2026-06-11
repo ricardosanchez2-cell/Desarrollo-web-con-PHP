@@ -22,7 +22,7 @@ if(isset($_SESSION['user_id'])){
     exit(); //siempre que haya un redireccionamiento
 }
 
-$_SESSION['error'] = ['Login' => 'Error de usuario o contraseña'];
+$_SESSION['error'] = ['login' => 'Usuario o contraseña incorrectos'];
 header("Location: ../");
       
 ?>

@@ -8,14 +8,20 @@ if(isset($_SESSION['user_id'])){
     exit(); //siempre que haya un redireccionamiento
 }
 
-$error = '';
+$msgError = '';
 
 try {
-$_SESSION['error']['login'];
+
+  if(isset($_SESSION['error']['login'])){
+    $msgError = $_SESSION['error']['login'];
+  }
+  else{
+    $msgError = 0;
+  }
 }
 catch (\Throwable $th) {
-    //throw $th;
-    $_SESSION['error'] = [];
+
+$msgError = 'ex';
 }
 
 ?>
@@ -86,9 +92,9 @@ catch (\Throwable $th) {
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Hola! Ingresa tus credenciales</p>
                
-                <?php if(isset($_SESSION['error'])){ ?>
-                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
-  <strong>Error!</strong> 
+                <?php if($msgError!=0){ ?>
+                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Error!</strong>  <?php echo $msgError;  ?>
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 <?php
