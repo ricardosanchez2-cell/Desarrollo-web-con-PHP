@@ -180,7 +180,7 @@
               <!--begin::Menu Footer-->
               <li class="user-footer">
                 <a href="#" class="btn btn-outline-secondary">Profile</a>
-                <a href="../user/logout/" class="btn btn-outline-danger float-end">Cerrar sesión</a>
+                <a href="../../user/logout/" class="btn btn-outline-danger float-end">Cerrar sesión</a>
               </li>
               <!--end::Menu Footer-->
             </ul>
