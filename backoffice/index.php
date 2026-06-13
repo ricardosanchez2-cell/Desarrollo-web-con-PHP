@@ -10,6 +10,9 @@ if(!isset($_SESSION['user_id'])){
     exit(); 
 }
 
+$ruta = ['assets' => '../', 'components' => ''];
+$_SESSION['ruta'] = $ruta;
+$_SESSION['titulos'] = ['webTitle' => 'CRM'];
 ?>
 
 <!doctype html>
@@ -18,7 +21,7 @@ if(!isset($_SESSION['user_id'])){
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Programacion Web en PHP con AdminLTE</title>
+  <title><?php echo $_SESSION['titulos']['webTitle']; ?></title>
 
   <!--begin::Accessibility Meta Tags-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
